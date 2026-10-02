@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="1인용 AI 대전과 2인용 대전을 지원하는 웹 오목 게임" />
+  <title>오목 한 판</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">FIVE IN A ROW</p>
+      <h1>오목 한 판</h1>
+      <p class="subtitle">AI와 혼자 즐기거나 친구와 번갈아 플레이하세요.</p>
+    </section>
+
+    <section class="game-card">
+      <div class="mode-panel">
+        <div>
+          <span class="label">게임 모드</span>
+          <strong id="modeLabel">1인용 · AI 대전</strong>
+        </div>
+        <div class="mode-buttons" role="group" aria-label="게임 모드 선택">
+          <button id="singleBtn" class="mode-btn active" type="button">1인용</button>
+          <button id="multiBtn" class="mode-btn" type="button">2인용</button>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="turn-box">
+          <span class="stone black" id="turnStone" aria-hidden="true"></span>
+          <div>
+            <span class="label">현재 차례</span>
+            <strong id="turnText">내 차례 · 흑돌</strong>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="undoBtn" class="secondary" type="button">무르기</button>
+          <button id="resetBtn" class="primary" type="button">새 게임</button>
+        </div>
+      </div>
+
+      <div class="board-wrap">
+        <canvas id="board" width="720" height="720" aria-label="15x15 오목판"></canvas>
+        <div class="thinking hidden" id="thinking">AI가 생각 중...</div>
+
+        <div class="result hidden" id="result" role="status" aria-live="polite">
+          <div class="result-card">
+            <span class="result-stone stone black" id="resultStone"></span>
+            <h2 id="resultTitle">승리!</h2>
+            <p id="resultMessage">다섯 개의 돌을 연결했습니다.</p>
+            <button id="playAgainBtn" class="primary" type="button">한 판 더</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="status-row">
+        <span id="moveCount">0수</span>
+        <span>15 × 15</span>
+        <span id="modeStatus">AI 대전</span>
+      </div>
+    </section>
+
+    <p class="tip" id="tip">
+      1인용에서는 내가 흑돌, AI가 백돌입니다. 가로·세로·대각선으로 5개 이상 연결하면 승리합니다.
+    </p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
